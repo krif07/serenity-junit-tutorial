@@ -18,4 +18,12 @@ public class ProductListPage extends PageObject {
     public static By productDetailsLinkFor(String itemName) {
         return By.linkText(itemName);
     }
+
+    public static By productAddToCartButtonByName(String productName) {
+        return By.xpath("//div[text()='" + productName + "']/../../following-sibling::div/button");
+    }
+
+    public int totalShoppingCartBadge() {
+        return Integer.parseInt($(".shopping_cart_badge").getText());
+    }
 }
