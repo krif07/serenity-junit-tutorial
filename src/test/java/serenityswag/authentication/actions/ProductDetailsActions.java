@@ -16,4 +16,9 @@ public class ProductDetailsActions extends UIInteractionSteps {
         $(ProductListPage.productAddToCartButtonByName(itemName)).click();
     }
 
+    @Step
+    public void openShoppingCart() {
+        $(ProductListPage.shoppingCartLink()).click();
+    }
+
 }

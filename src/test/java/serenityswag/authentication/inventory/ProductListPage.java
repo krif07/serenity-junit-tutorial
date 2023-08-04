@@ -23,6 +23,10 @@ public class ProductListPage extends PageObject {
         return By.xpath("//div[text()='" + productName + "']/../../following-sibling::div/button");
     }
 
+    public static By shoppingCartLink() {
+        return By.className("shopping_cart_link");
+    }
+
     public int totalShoppingCartBadge() {
         return Integer.parseInt($(".shopping_cart_badge").getText());
     }
