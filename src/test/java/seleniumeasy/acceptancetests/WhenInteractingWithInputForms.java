@@ -1,8 +1,12 @@
 package seleniumeasy.acceptancetests;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import net.serenitybdd.screenplay.ensure.Ensure;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import seleniumeasy.pageobjects.SimpleInputFieldsForm;
 
 import static java.util.Arrays.asList;
 
@@ -14,13 +18,26 @@ import static java.util.Arrays.asList;
 @ExtendWith(SerenityJUnit5Extension.class)
 public class WhenInteractingWithInputForms {
 
+    SimpleInputFieldsForm simpleInputFieldsForm;
+
     /**
      * Basic form fields:
      * Enter a message and check that the message is correctly displayed
-     * https://www.seleniumeasy.com/test/basic-first-form-demo.html
+     * https://demoqa.com/text-box
      */
     @Test
+    @DisplayName("Basic from: Full name should be displayed")
     public void basicForms() {
+        String fullName = "Cristian Davila";
+        simpleInputFieldsForm.open();
+        simpleInputFieldsForm.enterFullName(fullName);
+        /*simpleInputFieldsForm.enterCurrentAddress();
+        simpleInputFieldsForm.enterPermanentAddress();*/
+        simpleInputFieldsForm.submit();
+
+        Serenity.reportThat("Full name should be " + fullName,
+            () -> Ensure.that(simpleInputFieldsForm.displayedOutput()).isEqualTo("Name:"+fullName)
+        );
     }
 
     /**
@@ -31,6 +48,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void basicFormsWithMultipleFields() {
+
     }
 
     /**
